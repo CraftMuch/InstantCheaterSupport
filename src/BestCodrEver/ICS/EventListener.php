@@ -22,6 +22,11 @@ class EventListener implements Listener {
     $plugin->getServer()->getPluginManager()->registerEvents($this, $plugin);
   }
   
+  public function onDamage(EntityDamageByEntityEvent $event){
+    $player = $event->getPlayer()->getName();
+    $damaged = $event->getDamager()->getName();
+  }
+  
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
   switch($cmd->getName()) {
     case "ireport":
