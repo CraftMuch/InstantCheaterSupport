@@ -28,7 +28,10 @@ class EventListener implements Listener {
     case "ireport":
       if(!$sender instanceof Player) {
         $sender->sendMessage("This command must be run ingame.");
-      } else { 
+      } else {
+          if ($sender->hasPermission("ics.ban")){
+            $sender->sendMessage(TextFormat::RED . "You do not have permission to use the InstantCheaterSupport system.");
+          } else {
         //Form
         $guide = new CustomForm(function (Player $player, $data = null){
         if ($data === null){
@@ -75,7 +78,7 @@ class EventListener implements Listener {
           $guide->setDescription(TextFormat::BOLD . "Note:\nFake reports are bannable.\nDo not waste our time.\n\nThis system notifies online staff of any reports. It is not our fault if we cannot get to you in time as our staff have other things to do.");
           $guide->addButton("OK");
         })
-      }
+      }}}
     break;
   }
   return true;
