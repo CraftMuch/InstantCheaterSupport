@@ -22,10 +22,6 @@ class EventListener implements Listener {
     $plugin->getServer()->getPluginManager()->registerEvents($this, $plugin);
   }
   
-  public function onDamage(EntityDamageByEntityEvent $event){
-    $player = $event->getPlayer()->getName();
-    $damaged = $event->getDamager()->getName();
-  }
   
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
   switch($cmd->getName()) {
@@ -44,10 +40,31 @@ class EventListener implements Listener {
               if ($data === null){
                 return true;
               }
-                
+                $cause = $sender->getLastDamageCause(); 
+                if($cause instanceof EntityDamageByEntityEvent){
+                  $attacker = $cause->getDamager();
+                }
+                switch ($data){
+                case 0:
+                    $rp = $data["reportPlayer"];
+                    $rr = $data["reportReason"];
+                    //Save player report and run some checks on it
+                    if ($rp === null){
+                      //Report last damager
+                      $hax = $attacker;
+                    }else {
+                      //Report input
+                      $hax = $rp;
+                    }
+                    if ($rr === null){
+                      //Redo!
+                      $sender->sendMessage(TextFormat::RED . "Please enter your reason for reporting and retry.");
+                    }
+                break;
+                }
               $report->setTitle("Instant Player Report");
-              $default = null; //Recently hit player - null for now until I figure out how to set to recently hit player
-              $report->addInput("Gamertag:", "Example123", $default, "reportPlayer");
+              $default = $attacker;
+              $report->addInput("Gamertag:", null, $default, "reportPlayer");
               $report->addInput("Reason:", null, null, "reportReason");
               $report->addButton("Submit");
               $sender->sendForm($report);
