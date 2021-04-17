@@ -33,7 +33,7 @@ class EventListener implements Listener {
            return true;
         }
           $guide->setTitle("Instant Player Report");
-          $guide->setDescription("");
+          $guide->setDescription(TextFormat::BOLD . "Note:\n");
         }
       }
     break;
