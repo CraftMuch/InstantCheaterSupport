@@ -118,5 +118,21 @@ class EventListener implements Listener {
 
     return $written !== false;
   }
-
+ /**
+     * By Prymus#9110
+     * Not the best implementation I could come up with,
+     * but works in my local utopian world
+     * 
+     * IMPORTANT: This expects that no field is empty!
+     */
+    public static function decodeCSV(string $data, string $delimeter = ';', string $enclosure = '"', string $escape = "\\"): array
+    {
+        $lines = explode("\n", str_replace("\r", '', $data));
+        foreach ($lines as $k => &$line) {
+            $line = array_values(array_filter(str_getcsv($line, $delimeter, $enclosure, $escape)));
+            if (empty($line)) unset($lines[$k]);
+        }
+        return $lines;
+    }
+ 
 }
