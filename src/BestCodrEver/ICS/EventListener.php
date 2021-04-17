@@ -51,7 +51,7 @@ class EventListener implements Listener {
           $guide->setTitle("Instant Player Report");
           $guide->setDescription(TextFormat::BOLD . "Note:\nFake reports are bannable.\nDo not waste our time.\n\nThis system notifies online staff of any reports. It is not our fault if we cannot get to you in time as our staff have other things to do.");
           $guide->addButton("OK");
-        }
+        })
       }
     break;
   }
