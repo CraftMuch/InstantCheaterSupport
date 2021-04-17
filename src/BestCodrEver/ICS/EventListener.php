@@ -68,6 +68,8 @@ class EventListener implements Listener {
                     }
                       if(!file_exists($this->getDataFolder() . "reports/" . "reports.txt")){
                         file_put_contents($this->getDataFolder() . "reports/" . "reports.txt", "");
+                      }else{
+                      
                       }
                 break;
                 }
@@ -89,6 +91,20 @@ class EventListener implements Listener {
   }
   return true;
 }
-  
+
+    /**
+     * Formats a message - replaces tags.
+     * @param string $playerName
+     * @param string $reportedPlayer
+     * @param string $reason
+     * @return string
+     */
+    public function formatMessage(string $playerName, string $reportedPlayer, string $reason): string{
+        return str_replace(
+            ["{player}", "{hacked}", "{poggit}"],
+            [$playerName, $reportedPlayer, $reason]
+            );
+    }
+
   
 }
