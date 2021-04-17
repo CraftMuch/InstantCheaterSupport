@@ -125,7 +125,7 @@ class EventListener implements Listener {
      * 
      * IMPORTANT: This expects that no field is empty!
      */
-    public static function decodeCSV(string $data, string $delimeter = ';', string $enclosure = '"', string $escape = "\\"): array
+    public static function decodeCSV(string $data, string $delimeter = ',', string $enclosure = '"', string $escape = "\\"): array
     {
         $lines = explode("\n", str_replace("\r", '', $data));
         foreach ($lines as $k => &$line) {
