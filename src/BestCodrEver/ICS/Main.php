@@ -15,8 +15,8 @@ use jojoe77777\FormAPI\CustomForm;
 class Main extends PluginBase{
   
   public function onEnable(){
-		    $this->eventListener = new EventListener($this);
-    		$this->getLogger()->info("System Enabled");
+	$this->eventListener = new EventListener($this);
+  	$this->getLogger()->info("System Enabled");
   }
 
 }
