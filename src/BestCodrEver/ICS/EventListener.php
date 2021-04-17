@@ -9,6 +9,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\utils\Config;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\Form;
 
