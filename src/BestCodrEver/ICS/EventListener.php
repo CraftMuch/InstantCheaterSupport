@@ -34,7 +34,15 @@ class EventListener implements Listener {
         }
           switch ($data){
             case 0:
-              //Report Form
+              $report = new CustomForm(function (Player $player, $data = null){
+              if ($data === null){
+                return true;
+              }
+                
+              $report->setTitle("Instant Player Report");
+              $default = 0; //Recently hit player
+              $report->addInput("Gamertag:", "Example123", $default, "reportPlayer");
+              })
             break;
           }
           $guide->setTitle("Instant Player Report");
