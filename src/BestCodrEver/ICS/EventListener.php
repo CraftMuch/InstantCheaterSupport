@@ -91,20 +91,5 @@ class EventListener implements Listener {
   }
   return true;
 }
-
-    /**
-     * Formats a message - replaces tags.
-     * @param string $playerName
-     * @param string $reportedPlayer
-     * @param string $reason
-     * @return string
-     */
-    public function formatMessage(string $playerName, string $reportedPlayer, string $reason): string{
-        return str_replace(
-            ["{player}", "{hacked}", "{poggit}"],
-            [$playerName, $reportedPlayer, $reason]
-            );
-    }
-
-  
+ 
 }
