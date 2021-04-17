@@ -66,6 +66,20 @@ class EventListener implements Listener {
                     }else {
                       $hackusation = $rr;
                     }
+                    $plugin = $this->plugin;
+                    $player = $event->getPlayer();
+                    $playerName = strtolower($sender->getName());
+                    $filePath = $plugin->getDataFolder() . "Reports/" . $playerName . ".json";
+                      if (!file_exists($filePath)) {
+                        $reportData = array(
+                          "Player" => [$playerName],
+                          "Hacked" => [$hax],
+                          "Poggit" => [$hackusation]
+                        );
+                      if (file_put_contents($filePath, json_encode($reportData)) === false) {
+                        $plugin->getLogger()->info(TextFormat::RED . "Failed to generate files for " . $sender->getName());
+                        }
+                     return;
                 break;
                 }
               $report->setTitle("Instant Player Report");
