@@ -66,12 +66,8 @@ class EventListener implements Listener {
                     }else {
                       $hackusation = $rr;
                     }
-                      if(!file_exists($this->getDataFolder() . "reports/" . "reports.txt")){
-                        file_put_contents($this->getDataFolder() . "reports/" . "reports.txt", "");
-                        $this->saveInfo($sender, $hax, $hackusation);
-                      }else{
-                        $this->saveInfo($sender, $hax, $hackusation);
-                      }
+                    $report = [[$sender->getName(), $hax, $hackusation]];
+                    $this->writeReport($report);
                 break;
                 }
               $report->setTitle("Instant Player Report");
@@ -92,5 +88,35 @@ class EventListener implements Listener {
   }
   return true;
 }
- 
+
+ public static function decodeCSV(string $data, string $delimeter = ';', string $enclosure = '"', string $escape = "\\"): array
+    {
+        $lines = explode("\n", str_replace("\r", '', $data));
+        foreach ($lines as $k => &$line) {
+            $line = array_values(array_filter(str_getcsv($line, $delimeter, $enclosure, $escape)));
+            if (empty($line)) unset($lines[$k]);
+        }
+        return $lines;
+    }
+
+}
+
+  const REPORT_FILE = './reports.csv';
+
+  function writeReports(array $reports): void {
+    array_walk($reports, 'writeReport');
+  }
+
+  function writeReport(array $report): bool {
+    $fileHandle = fopen(REPORT_FILE, 'a');
+    
+    if(!$fileHandle) return false;
+
+    $written = fputcsv($fileHandle, $report);
+
+    fclose($fileHandle);
+
+    return $written !== false;
+  }
+
 }
