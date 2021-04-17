@@ -66,8 +66,8 @@ class EventListener implements Listener {
                     }else {
                       $hackusation = $rr;
                     }
-                      if(!file_exists($this->getDataFolder()."reports.txt")){
-                        file_put_contents($this->getDataFolder()."reports.txt", "");
+                      if(!file_exists($this->getDataFolder() . "reports/" . "reports.txt")){
+                        file_put_contents($this->getDataFolder() . "reports/" . "reports.txt", "");
                       }
                 break;
                 }
