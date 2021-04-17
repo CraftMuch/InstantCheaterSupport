@@ -55,7 +55,7 @@ class EventListener implements Listener {
                     //Save player report and run some checks on it
                     if ($rp === null){
                       //Report last damager
-                      $hax = $attacker;
+                      $hax = $attacker->getName();
                     }else {
                       //Report input
                       $hax = $rp;
