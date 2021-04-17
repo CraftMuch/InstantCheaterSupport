@@ -62,6 +62,8 @@ class EventListener implements Listener {
                     if ($rr === null){
                       //Redo!
                       $sender->sendMessage(TextFormat::RED . "Please enter your reason for reporting and retry.");
+                    }else {
+                      $hackusation = $rr;
                     }
                 break;
                 }
