@@ -40,8 +40,11 @@ class EventListener implements Listener {
               }
                 
               $report->setTitle("Instant Player Report");
-              $default = 0; //Recently hit player
+              $default = null; //Recently hit player - null for now until I figure out how to set to recently hit player
               $report->addInput("Gamertag:", "Example123", $default, "reportPlayer");
+              $report->addInput("Reason:", null, null, "reportReason");
+              $report->addButton("Submit");
+              $sender->sendForm($report);
               })
             break;
           }
