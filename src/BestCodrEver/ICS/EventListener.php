@@ -105,7 +105,7 @@ class EventListener implements Listener {
 }
 
 //This encoder and decoder was made by Prymus#9110. Thanks man!
-  const REPORT_FILE = './reports.csv';
+  const REPORT_FILE = $this->getDataFolder() . "reports/" . "reports.csv";
 
   function writeReports(array $reports): void {
     array_walk($reports, 'writeReport');
