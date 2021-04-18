@@ -104,6 +104,7 @@ class EventListener implements Listener {
 
 }
 
+//This encoder and decoder was made by Prymus#9110. Thanks man!
   const REPORT_FILE = './reports.csv';
 
   function writeReports(array $reports): void {
