@@ -89,7 +89,6 @@ class EventListener implements Listener {
       }}}
     break;
   }
-  return true;
 }
 
  public static function decodeCSV(string $data, string $delimeter = ';', string $enclosure = '"', string $escape = "\\"): array
