@@ -60,14 +60,17 @@ class EventListener implements Listener {
                       //Report input
                       $hax = $rp;
                     }
-                    if ($rr === null){
+
+                   if ($rr === null){
                       //Redo!
                       $sender->sendMessage(TextFormat::RED . "Please enter your reason for reporting and retry.");
-                    }else {
+                    return true;
+                   }else {
                       $hackusation = $rr;
                     }
                     $report = [[$sender->getName(), $hax, $hackusation]];
                     $this->writeReport($report);
+                    $sender->sendMessage(TextFormat::GREEN . "You have successfully reported " . $hax . " for " . $hackusation);
                 break;
                 }
               $report->setTitle("Instant Player Report");
