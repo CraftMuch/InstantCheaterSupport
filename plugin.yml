@@ -1,0 +1,16 @@
+name: InstantCheaterSupport
+main: BestCodrEver\ICS\Main
+api: 3.18.0
+author: BestCodrEver
+version: 1.0.0
+
+permissions:
+ ics.idkidontneedbancommandthen:
+  description: "Allows a player to use the ICS System"
+  default: true
+
+commands:
+ ireport:
+  description: "Instantly report a player!"
+  usage: /ireport
+  permission: ics.idkidontneedbancommandthen
